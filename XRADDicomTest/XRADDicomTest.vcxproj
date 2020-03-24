@@ -86,42 +86,42 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(XRADRoot)\Projects\XRADGUI\XRADGUI.props" />
-    <Import Project="$(XRADRoot)\Projects\XRADDicom\XRADDicom.props" />
+    <Import Project="$(XRADRoot)\XRADDicom\MSVC\XRADDicom.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

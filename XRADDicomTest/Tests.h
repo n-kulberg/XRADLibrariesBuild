@@ -1,19 +1,11 @@
 ﻿/*!
-	* \file Tests.h
-	* \date 10/5/2018 6:19:48 PM
-	*
-	* \author Kovbas (kovbas)
-	*
-	* \brief
-	*
-	* TODO: long description
-	*
-	* \note
+	\file
+	\date 10/5/2018 6:19:48 PM
+	\author Kovbas (kovbas)
 */
 #ifndef Tests_h__
 #define Tests_h__
 
-//#include <XRADDicom/DicomClasses/DataContainers/datasource.h>
 #include <XRADDicom/XRADDicom.h>
 
 XRAD_USING

@@ -1,27 +1,15 @@
 ﻿/*!
-	* \file Tests.cpp
-	* \date 10/5/2018 6:19:48 PM
-	*
-	* \author Kovbas (kovbas)
-	*
-	* \brief
-	*
-	* TODO: long description
-	*
-	* \note
+	\file
+	\date 10/5/2018 6:19:48 PM
+	\author Kovbas (kovbas)
 */
-#include <pre.h>
+#include "pre.h"
 #include "Tests.h"
 
 #include <XRADDicom/XRADDicom.h>
 #include <XRADDicomGUI/XRADDicomGUI.h>
-
 #include <XRAD/GUI/DynamicDialog.h>
-
 #include <XRADSystem/CFile.h>
-
-#include <XRADBasic/Core.h>
-
 #include <sstream>
 #include <string>
 

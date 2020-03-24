@@ -1,17 +1,16 @@
-﻿#include <pre.h>
+﻿#include "pre.h"
 
-#pragma warning(disable:4101)
-#pragma warning(disable:4189)
-#pragma warning(disable:4127)
+//#pragma warning(disable:4101)
+//#pragma warning(disable:4189)
+//#pragma warning(disable:4127)
 
-
-#include <iostream>
 #include "GenerateFigures.h"
+#include "Tests.h"
 
 #include <XRADDicom/XRADDicom.h>
 #include <XRADDicomGUI/XRADDicomGUI.h>
 
-#include <Tests.h>
+#include <iostream>
 #include <vld.h>
 
 XRAD_USING

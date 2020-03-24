@@ -1,15 +1,12 @@
-﻿#include <pre.h>
+﻿/*!
+	\file
+	\date 8:11:2016 17:41
+	\author kns
+*/
+#include "pre.h"
 #include "GenerateFigures.h"
 #include <XRAD/GUI/SaveRasterImage.h>
-
-
-/********************************************************************
-	created:	2016/11/08
-	created:	8:11:2016   17:41
-	author:		kns
-*********************************************************************/
-
-#include "MathFunctionGUIMD.h"
+#include <MathFunctionGUIMD.h>
 
 #include <XRADDicom/XRADDicom.h>
 #include <XRADDicomGUI/XRADDicomGUI.h>
@@ -102,7 +99,7 @@ void	SimulateSponge(RealFunctionMD_UI8	&volume, size_t n_points, double agility,
 	for(size_t i = 0; i < 0.5 * foundation_thickness; ++i) volume.GetSlice({i, slice_mask(1), slice_mask(0)}).fill(255);
 
 	for(size_t i = 0; i < 4*foundation_thickness; ++i)
-	{		
+	{
 		volume.GetSlice({slice_mask(1), i, slice_mask(0)}).fill(255);
 		volume.GetSlice({slice_mask(1), volume.sizes(1) - i, slice_mask(0)}).fill(255);
 

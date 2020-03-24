@@ -1,11 +1,10 @@
-﻿#ifndef GenerateFigures_h__
+﻿/*!
+	\file
+	\date 8:11:2016 17:41
+	\author kns
+*/
+#ifndef GenerateFigures_h__
 #define GenerateFigures_h__
-
-/********************************************************************
-	created:	2016/11/08
-	created:	8:11:2016   17:41
-	author:		kns
-*********************************************************************/
 
 #include <XRADBasic/MathFunctionTypesMD.h>
 
