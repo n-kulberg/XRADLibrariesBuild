@@ -1,44 +1,35 @@
 ﻿cmake_minimum_required(VERSION 3.7)
 
-project("XRADBasicTest")
+set(Project "XRADBasicTest")
+project(${Project} LANGUAGES CXX)
 
-#if(NOT DEFINED ENV{XRADRoot})
-#	message(FATAL_ERROR "The XRADRoot environment variable is not set.")
-#endif()
-set(XRADRoot $ENV{XRADRoot} CACHE PATH "XRAD library root directory.")
-if("${XRADRoot}" STREQUAL "")
-	message(FATAL_ERROR "The XRAD root directory must be set.")
+set(XRAD_Root $ENV{XRADRoot} CACHE PATH "XRAD library sources directory.")
+if("${XRAD_Root}" STREQUAL "")
+	message(FATAL_ERROR "Please, specify XRAD library sources directory (XRAD_Root).")
 endif()
 
-if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
-	SET(XRADBasic_IncludeDir "${XRADRoot}")
-        SET(XRADBasic_LibrariesDir "${XRADRoot}/XRADBasic/out/build/x64-Debug" CACHE PATH "Path to XRADBasic build directory.")
-	SET(XRADBasic_Libraries "${XRADBasic_LibrariesDir}/XRADBasicD.lib")
-elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	SET(XRADBasic_IncludeDir "${XRADRoot}")
-        SET(XRADBasic_BuildDir "${XRADRoot}/build" CACHE PATH "Path to XRAD build root directory.")
-	SET(XRADBasic_LibrariesDir "${XRADBasic_BuildDir}/XRADBasic")
-	SET(XRADBasic_Libraries "${XRADBasic_LibrariesDir}/libXRADBasic.a")
-	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -fopenmp")
-	#SET(SystemLibraries "libomp.a" "libgcc.a" "libstdc++.a")
-else()
-	message(FATAL_ERROR "Unsupported CMAKE_CXX_COMPILER_ID: \"${CMAKE_CXX_COMPILER_ID}\".")
-endif()
+include(${XRAD_Root}/XRADBasic/CMake/CommonOptions.cmake)
+include(${XRAD_Root}/XRADBasic/CMake/Package.cmake)
 
-include_directories(${XRADBasic_IncludeDir})
+set(Project_IncludeDirs ${Project_IncludeDirs}
+	${XRAD_IncludeDir}
+	)
 
-set(XRADBasicTest_Sources_cpp
+set(Project_Sources_cpp
 	XRADBasicTest.cpp
-)
+	)
 
-set(XRADBasicTest_Sources_h
+set(Project_Sources_h
 	pre.h
-)
+	)
 
-set(XRADBasicTest_Sources_All
-	${XRADBasicTest_Sources_cpp}
-	${XRADBasicTest_Sources_h}
-)
+set(Project_Sources_All
+	${Project_Sources_cpp}
+	${Project_Sources_h}
+	)
 
-add_executable(XRADBasicTest ${XRADBasicTest_Sources_All})
-target_link_libraries(XRADBasicTest ${XRADBasic_Libraries} ${SystemLibraries})
+add_executable(${Project} ${Project_Sources_All})
+target_include_directories(${Project} PRIVATE ${Project_IncludeDirs})
+target_link_libraries(${Project}
+	${XRADBasic_Libraries}
+	)
