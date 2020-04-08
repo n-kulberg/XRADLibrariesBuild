@@ -4,7 +4,7 @@
 #define __TrackedObject_h
 //--------------------------------------------------------------
 
-#include <XRAD.h>
+#include <XRADGUI/XRAD.h>
 #include <set>
 
 XRAD_BEGIN

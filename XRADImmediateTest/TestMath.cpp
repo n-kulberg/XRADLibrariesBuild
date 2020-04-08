@@ -3,7 +3,7 @@
 #include "pre.h"
 
 #include "TestMath.h"
-#include <XRAD/Tests/TestHelpers.h>
+#include <XRADBasic/Tests/TestHelpers.h>
 
 //--------------------------------------------------------------
 

@@ -1,155 +1,153 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;cxx;c;def</Extensions>
+    <Filter Include="XRADBasic">
+      <UniqueIdentifier>{3f77ad88-b1fc-45d1-8b6e-1ed9df9a2a30}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Test files">
-      <UniqueIdentifier>{35af89c7-6463-4c3a-8fc2-aa69682d155b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h</Extensions>
-    </Filter>
-    <Filter Include="XRAD/Tests">
+    <Filter Include="XRADBasic\Tests">
       <UniqueIdentifier>{10b19a1d-6ee0-4a91-958b-f0341fbbd76a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="XRAD/PlatformSpecific/MSVC">
+    <Filter Include="XRADBasic\Sources/PlatformSpecific/MSVC">
       <UniqueIdentifier>{ca20c99c-d000-4faf-9f20-1a989cdcd5a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{35af89c7-6463-4c3a-8fc2-aa69682d155b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pre.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TestFunctions.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="SharpeningTest.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestFunctionsArchive.cpp">
-      <Filter>Test files</Filter>
-    </ClCompile>
-    <ClCompile Include="$(XRADRoot)\Sources\XRAD\Tests\StringEncodeTest.cpp">
-      <Filter>XRAD/Tests</Filter>
-    </ClCompile>
-    <ClCompile Include="$(XRADRoot)\Sources\XRAD\Tests\StringConverters_MS_Test.cpp">
-      <Filter>XRAD/Tests</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestThreads.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestGUIFunctions.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestMisc.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestJson.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestArrays.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TrackedObject.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestDynamicDialog.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestProgress.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestFileOperations.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestMath.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="$(XRADRoot)\XRADBasic\Sources\PlatformSpecific\MSVC\XRADNatvisTest.cpp">
-      <Filter>XRAD/PlatformSpecific/MSVC</Filter>
+      <Filter>XRADBasic\Sources/PlatformSpecific/MSVC</Filter>
     </ClCompile>
     <ClCompile Include="TestFFT.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClCompile>
     <ClCompile Include="TestPerformanceCounter.cpp">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="$(XRADRoot)\XRADBasic\Tests\StringConverters_MS_Test.cpp">
+      <Filter>XRADBasic\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="$(XRADRoot)\XRADBasic\Tests\StringEncodeTest.cpp">
+      <Filter>XRADBasic\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="pre.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SharpeningTest.h">
-      <Filter>Test files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(XRADRoot)\Sources\XRAD\Tests\StringEncodeTest.h">
-      <Filter>XRAD/Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="$(XRADRoot)\Sources\XRAD\Tests\StringConverters_MS_Test.h">
-      <Filter>XRAD/Tests</Filter>
-    </ClInclude>
-    <ClInclude Include="$(XRADRoot)\Sources\XRAD\Tests\TestHelpers.h">
-      <Filter>XRAD/Tests</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestThreads.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestArrays.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TrackedObject.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestDynamicDialog.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestProgress.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestFileOperations.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestMath.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestFunctions.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestFunctionsArchive.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestGUIFunctions.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestJson.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestMisc.h">
-      <Filter>Test files</Filter>
-    </ClInclude>
-    <ClInclude Include="$(XRADRoot)\Sources\XRAD\PlatformSpecific\MSVC\XRADNatvisTest.h">
-      <Filter>XRAD/PlatformSpecific/MSVC</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestFFT.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
     <ClInclude Include="TestPerformanceCounter.h">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="XRADImmediateTest.bmp">
-      <Filter>Source Files</Filter>
-    </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="$(XRADRoot)\Sources\XRAD\Tests\readme.txt">
-      <Filter>XRAD/Tests</Filter>
-    </Text>
+    <ClInclude Include="$(XRADRoot)\XRADBasic\Sources\PlatformSpecific\MSVC\XRADNatvisTest.h">
+      <Filter>XRADBasic\Sources/PlatformSpecific/MSVC</Filter>
+    </ClInclude>
+    <ClInclude Include="$(XRADRoot)\XRADBasic\Tests\StringConverters_MS_Test.h">
+      <Filter>XRADBasic\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="$(XRADRoot)\XRADBasic\Tests\StringEncodeTest.h">
+      <Filter>XRADBasic\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="$(XRADRoot)\XRADBasic\Tests\TestHelpers.h">
+      <Filter>XRADBasic\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="pre.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <MASM Include="TestFFT_asm.asm">
-      <Filter>Test files</Filter>
+      <Filter>Sources</Filter>
     </MASM>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="$(XRADRoot)\XRADBasic\Tests\readme.txt">
+      <Filter>XRADBasic\Tests</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="XRADImmediateTest.bmp">
+      <Filter>Sources</Filter>
+    </Image>
   </ItemGroup>
 </Project>

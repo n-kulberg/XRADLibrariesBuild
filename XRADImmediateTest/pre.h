@@ -3,8 +3,7 @@
 
 #define __pre_h_first
 
-#include <XRAD.h>
-// это заготовка
+#include <XRADGUI/XRAD.h>
 
 #undef __pre_h_first
 

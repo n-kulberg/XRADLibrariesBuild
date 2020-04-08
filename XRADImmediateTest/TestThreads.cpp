@@ -3,7 +3,6 @@
 #include "pre.h"
 
 #include "TestThreads.h"
-#include <XRAD/GUI/DynamicDialog.h>
 #include <XRADBasic/Sources/Utils/ProcessorPoolDispatcher.h>
 #include <mutex>
 #include <condition_variable>

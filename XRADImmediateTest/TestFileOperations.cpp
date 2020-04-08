@@ -5,7 +5,6 @@
 #include "TestFileOperations.h"
 
 #include <XRADSystem/CFile.h>
-#include <TextDisplayer.h>
 #include <iostream>
 
 //--------------------------------------------------------------

@@ -14,8 +14,6 @@
 #include "TestDynamicDialog.h"
 #include "TestProgress.h"
 
-#include <TextDisplayer.h>
-
 XRAD_BEGIN
 
 //--------------------------------------------------------------

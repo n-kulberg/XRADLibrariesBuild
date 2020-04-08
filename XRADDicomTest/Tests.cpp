@@ -8,7 +8,6 @@
 
 #include <XRADDicom/XRADDicom.h>
 #include <XRADDicomGUI/XRADDicomGUI.h>
-#include <XRAD/GUI/DynamicDialog.h>
 #include <XRADSystem/CFile.h>
 #include <sstream>
 #include <string>

@@ -8,7 +8,6 @@
 
 #include "TestFFT.h"
 #include <XRADBasic/MathFunctionTypes.h>
-#include <XRAD/GUI/DynamicDialog.h>
 #include <XRADBasic/Sources/Fourier/CooleyTukeyFFT.h>
 #include <thread>
 #include <atomic>

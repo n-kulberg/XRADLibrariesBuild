@@ -3,7 +3,6 @@
 #include "pre.h"
 
 #include "TestDynamicDialog.h"
-#include <XRAD/GUI/DynamicDialog.h>
 #include <XRADBasic/Sources/Core/EscapeSequences.h>
 
 XRAD_BEGIN

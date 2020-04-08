@@ -8,15 +8,16 @@
 #include <XRADBasic/Sources/Utils/ValuePredicates.h>
 #include <XRADBasic/Sources/Utils/numbers_in_string.h>
 
-#include "XRAD/Tests/TestHelpers.h"
-#include "XRAD/Tests/StringEncodeTest.h"
-#include <XRAD/Tests/StringConverters_MS_Test.h>
-#include <XRAD/Tests/StringConverters_Qt_Test.h>
-#include <XRAD/PlatformSpecific/MSVC/PC_XRADGUITestsLibLink.h>
+#include <XRADBasic/Tests/TestHelpers.h>
+#include <XRADBasic/Tests/StringEncodeTest.h>
+#include <XRADBasic/Tests/StringConverters_MS_Test.h>
+#include <XRADGUI/Tests/StringConverters_Qt_Test.h>
+
+#ifdef XRAD_COMPILER_MSC
+#include <XRADGUI/Sources/PlatformSpecific/MSVC/MSVC_XRADGUITestsLibLink.h>
+#endif
 
 #include <XRADSystem/TextFile.h>
-#include <XRAD/GUI/DynamicDialog.h>
-#include <XRAD/GUI/I18nSupport.h>
 #include <XRADBasic/Sources/Core/EscapeSequences.h>
 
 //--------------------------------------------------------------

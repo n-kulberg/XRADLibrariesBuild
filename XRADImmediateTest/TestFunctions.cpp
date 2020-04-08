@@ -1,5 +1,4 @@
 ﻿#include "pre.h"
-#include <XRAD.h>
 
 #include "TestFunctions.h"
 #include "TestArrays.h"
@@ -14,18 +13,17 @@
 #include "TestFFT.h"
 
 #include <XRADBasic/BooleanFunctionTypes.h>
-#include <MatrixVectorGUI.h>
 #include <XRADBasic/Sources/Containers/ColorContainer.h>
 #include <XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.h>
 #include <iostream>
 #include <cmath>
 #include <XRADBasic/Sources/Utils/ValuePredicates.h>
-#include <XRAD/Utils/AutoProgressIndicatorScheduler.h>
 
+#ifdef XRAD_COMPILER_MSC
 #include <vld.h>
-
 #pragma warning(disable:4101) // Unreferenced local variable.
 #pragma warning(disable:4189) // Local variable is initialized but not referenced
+#endif // XRAD_COMPILER_MSC
 
 XRAD_USING
 

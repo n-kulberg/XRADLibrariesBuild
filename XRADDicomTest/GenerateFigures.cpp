@@ -5,8 +5,6 @@
 */
 #include "pre.h"
 #include "GenerateFigures.h"
-#include <XRAD/GUI/SaveRasterImage.h>
-#include <MathFunctionGUIMD.h>
 
 #include <XRADDicom/XRADDicom.h>
 #include <XRADDicomGUI/XRADDicomGUI.h>
