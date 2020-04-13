@@ -8,11 +8,12 @@
 	\brief
 */
 
-#include <iostream>
-
 #include <XRADBasic/Sources/Containers/VectorFunction.h>
 #include "TestDynamicDialog.h"
 #include "TestProgress.h"
+
+#include <iostream>
+#include <cstring>
 
 XRAD_BEGIN
 

@@ -6,7 +6,7 @@
 #include <XRADBasic/Sources/Math/SpecialFunctions.h>
 
 #include <iostream>
-
+#include <cstring>
 
 /*!
  * \file TestFunctionsArchive.cpp

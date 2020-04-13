@@ -74,6 +74,10 @@ shared_ptr<T> make_shared_x(Args&&... args)
 
 //--------------------------------------------------------------
 
+} // namespace
+
+//--------------------------------------------------------------
+
 // Проверка компилируемости всех методов шаблона EnumRadioButtonChoiceImpl:
 template class DynamicDialog::EnumRadioButtonChoiceImpl<string>; // тип с операцией сравнения (==)
 template class DynamicDialog::EnumRadioButtonChoiceImpl<function<void ()>>; // тип без ==
@@ -92,6 +96,11 @@ template class DynamicDialog::ValueEnumComboBoxImpl<function<void ()>>; // ти�
 
 // Проверка компилируемости всех методов шаблона ValueNumberEdit:
 template class DynamicDialog::ValueNumberEdit<double>;
+
+//--------------------------------------------------------------
+
+namespace
+{
 
 //--------------------------------------------------------------
 

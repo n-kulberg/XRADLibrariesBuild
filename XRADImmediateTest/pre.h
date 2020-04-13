@@ -1,10 +1,6 @@
-﻿#ifndef __pre_h
-#define __pre_h
-
-#define __pre_h_first
+﻿#ifndef XRAD__pre_h
+#define XRAD__pre_h
 
 #include <XRADGUI/XRAD.h>
 
-#undef __pre_h_first
-
-#endif //__pre_h
+#endif // XRAD__pre_h

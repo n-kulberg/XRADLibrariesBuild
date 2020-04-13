@@ -14,10 +14,13 @@
 
 #include <XRADBasic/BooleanFunctionTypes.h>
 #include <XRADBasic/Sources/Containers/ColorContainer.h>
+#ifdef XRAD_COMPILER_MSC
 #include <XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.h>
+#endif // XRAD_COMPILER_MSC
+#include <XRADBasic/Sources/Utils/ValuePredicates.h>
 #include <iostream>
 #include <cmath>
-#include <XRADBasic/Sources/Utils/ValuePredicates.h>
+#include <thread>
 
 #ifdef XRAD_COMPILER_MSC
 #include <vld.h>
@@ -60,7 +63,7 @@ void	PredicateTest()
 	p4(2.3);//false
 }
 
-#ifdef _MSC_VER
+#ifdef XRAD_COMPILER_MSC
 #pragma optimize ("", off)
 void RaiseNullPointerReference()
 {
@@ -81,15 +84,39 @@ void RaiseFloatingPointError()
 	double b = 1./a;
 }
 #pragma optimize ("", on)
+
+#elif defined(XRAD_COMPILER_GNUC)
+
+void __attribute__((optimize("O0"))) RaiseNullPointerReference()
+{
+	*(int*)nullptr = 0;
+}
+void __attribute__((optimize("O0"))) RaiseInvalidPointerReference()
+{
+	int i = *(int*)-0x123;
+}
+void __attribute__((optimize("O0"))) RaiseDivisionByZero()
+{
+	int a = 0;
+	int b = 1/a;
+}
+void __attribute__((optimize("O0"))) RaiseFloatingPointError()
+{
+	double a = 0;
+	double b = 1./a;
+}
+
 #else
 #error This code is nonportable in case of optimization.
 #endif
 
-#ifdef _MSC_VER
+#if defined(XRAD_COMPILER_MSC)
 #pragma float_control(push)
 #pragma float_control(precise, on)
 #pragma fenv_access(on)
 #pragma float_control(except, on)
+#elif defined(XRAD_COMPILER_GNUC)
+#pragma STDC FENV_ACCESS ON
 #else
 #error Unknown compiler (see #pragma STDC FENV_ACCESS ON)
 #endif
@@ -243,8 +270,10 @@ void ExceptionsTest()
 	}
 }
 
-#ifdef _MSC_VER
+#if defined(XRAD_COMPILER_MSC)
 #pragma float_control(pop)
+#elif defined(XRAD_COMPILER_GNUC)
+#pragma STDC FENV_ACCESS OFF
 #else
 #error Unknown compiler (see #pragma STDC FENV_ACCESS ...)
 #endif
@@ -433,7 +462,7 @@ pair<bool, string> TestMoveSemanticsHelper2D()
 	const size_t size_h = 2*base_size, size_v = base_size/2;
 	Array2D array00(size_v, size_h);
 	Array2D array1;
-	array1.realloc(size_v, size_h, Array2D::value_type(-1));
+	array1.realloc(size_v, size_h, typename Array2D::value_type(-1));
 	array1.at(0,0) = 1;
 	array1.at(0,1) = 2;
 	array1.at(1,0) = 20;
@@ -580,7 +609,7 @@ pair<bool, string> TestMoveSemanticsHelperMD()
 	index_vector size {size_0, size_1, size_3, size_3};
 	ArrayMD array00(size);
 	ArrayMD array1;
-	array1.realloc(size, ArrayMD::value_type(-1));
+	array1.realloc(size, typename ArrayMD::value_type(-1));
 	array1.at({0, 0, 0, 0}) = 1;
 	array1.at({0, 0, 0, 1}) = 2;
 	array1.at({0, 0, 1, 0}) = 3;
@@ -841,7 +870,9 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 						MakeButton(L"Performance counter", func(TestPerformanceCounter)),
 						MakeButton(L"Threads", func(TestThreads)),
 						MakeButton(L"Round", func(TestRound)),
+#ifdef XRAD_COMPILER_MSC
 						MakeButton(L"Natvis (debugger visualization)", func(XRADNatvisTest)),
+#endif // XRAD_COMPILER_MSC
 						MakeButton(L"Force memory leak", func(MemoryLeakTest)),
 						MakeButton(L"Predicates test", func(PredicateTest)),
 						MakeButton(L"Exceptions test", func(ExceptionsTest)),

@@ -789,8 +789,8 @@ void check_rgb_sums(const Array &array, vector<double> sum, vector<double> sum_s
 	if (sum.size() != 3 || sum_sq.size() != 3)
 		throw invalid_argument("Check_rgb_sums: Invalid sum size.");
 	auto array_sum = ElementSum(array);
-	auto array_sum_sq = ElementSumTransformed(array, [](const Array::value_type &v)
-			{ return Array::value_type(square(v.red()), square(v.green()), square(v.blue())); });
+	auto array_sum_sq = ElementSumTransformed(array, [](const typename Array::value_type &v)
+			{ return typename Array::value_type(square(v.red()), square(v.green()), square(v.blue())); });
 	vector<wstring> mismatches;
 	if (array_sum.red() != sum[0] || array_sum_sq.red() != sum_sq[0])
 		mismatches.push_back(L"R");
