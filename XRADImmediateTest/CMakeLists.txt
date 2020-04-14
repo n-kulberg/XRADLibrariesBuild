@@ -82,7 +82,7 @@ set(Project_Sources_All
 	${Project_Sources_PlatformSpecific_h}
 	)
 
-add_executable(${Project} ${Project_Sources_All})
+add_executable(${Project} ${XRADGUI_ExecutableOptions} ${Project_Sources_All})
 target_include_directories(${Project} PRIVATE ${Project_IncludeDirs})
 target_link_libraries(${Project}
 	${XRADGUI_Libraries}

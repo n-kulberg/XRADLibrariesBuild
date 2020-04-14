@@ -1156,9 +1156,9 @@ void	TestExtendedSprintf()
 	string	s5 = ssprintf("Ext wPointer: %s", ws0.c_str());
 	string	s6 = ssprintf("Ext wString: %s", ws0);
 
-	wstring	ws1 = ssprintf_core(L"wPointer: %s", ws0.c_str());
-	wstring	ws3 = ssprintf(L"Ext wPointer: %s", ws0.c_str());
-	wstring	ws4 = ssprintf(L"Ext wString: %s", ws0);
+	wstring	ws1 = ssprintf_core(L"wPointer: %ls", ws0.c_str());
+	wstring	ws3 = ssprintf(L"Ext wPointer: %ls", ws0.c_str());
+	wstring	ws4 = ssprintf(L"Ext wString: %ls", ws0);
 
 
 	//неудавшаяся попытка вызвать warning C4477: format string '%d' requires an argument of type 'int', but variadic argument 1 has type 'double'

@@ -506,24 +506,26 @@ void	TestUnicode()
 	u32string	u32str2 = convert_to_u32string(ustr2);
 	ShowString(L"u8->32->8", u32str2);
 	ustring ustr3 = ssprintf(convert_to_ustring(L"результат ssprintf(ustring).\r\nEnd"));
-	ShowString(convert_to_ustring(L"строка"), ssprintf(convert_to_ustring(L"ssprintf в УТФ-8. (%s)\r\nEnd"), ustr3.c_str()));
+	ShowString(convert_to_ustring(L"строка"), ssprintf(convert_to_ustring(
+			L"ssprintf в УТФ-8. (%s)\r\nEnd" // использовано %s: строка будет преобразована в const char*
+			), ustr3.c_str()));
 
 	{
 		text_file_writer	wfile;
 
-		wfile.open_create("c:/temp/wtest.txt", enc);
-		wfile.printf_(L"Однажды в студеную зимнюю пору (%s)\r\n", L"'🍌🌠🎄'");//utf16
+		wfile.open_create(GetTempDirectory() + "/wtest.txt", enc);
+		wfile.printf_(L"Однажды в студеную зимнюю пору (%ls)\r\n", L"'🍌🌠🎄'");//utf16
 
-		wfile.printf_(convert_to_wstring(L"Я из лесу вышел. Был сильный мороз. (%s)\r\n"), convert_to_wstring("УТФ-16 из разных типов").c_str());//utf16
+		wfile.printf_(convert_to_wstring(L"Я из лесу вышел. Был сильный мороз. (%ls)\r\n"), convert_to_wstring("УТФ-16 из разных типов").c_str());//utf16
 		wfile.printf_("Гляжу, поднимается медленно в гору (%s)\r\n", "чистые 8 бит");//8bit
-		wfile.printf_(convert_to_wstring(L"Лошадка, везущая хворосту воз. (%s)\r\n"), convert_to_wstring("УТФ-8 из разных типов").c_str());//ошибка начинается с этой строки
-		wfile.printf_(L"И, шествуя важно в спокойствии чинном,\r\nЧитает она по-китайски стихи:\r\n(%s)", L"维基百科");//krakozyb utf16
+		wfile.printf_(convert_to_wstring(L"Лошадка, везущая хворосту воз. (%ls)\r\n"), convert_to_wstring("УТФ-8 из разных типов").c_str());
+		wfile.printf_(L"И, шествуя важно в спокойствии чинном,\r\nЧитает она по-китайски стихи:\r\n(%ls)", L"维基百科");//krakozyb utf16
 	}
 
 
 	{
 		text_file_reader	rfile;
-		rfile.open("c:/temp/wtest.txt");
+		rfile.open(GetTempDirectory() + "/wtest.txt");
 //		if(rfile.encoding()==text_encoding::encoding_unknown) rfile.set_encoding(text_encoding::encoding_char_8bit);
 		wstring	content;
 	//	DataArray<wchar_t>	content(rfile.size()/sizeof(wchar_t) + 1, 0);
