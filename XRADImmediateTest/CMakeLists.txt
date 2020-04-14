@@ -59,6 +59,7 @@ set(Project_Sources_h
 	)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+	# TODO: TestFFT_asm.asm
 	set(Project_Sources_PlatformSpecific_cpp
 	    ${XRAD_Root}/XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.cpp
 	    ${XRAD_Root}/XRADBasic/Tests/StringConverters_MS_Test.cpp
@@ -88,4 +89,5 @@ target_link_libraries(${Project}
 	${XRADGUITestsLib_Libraries}
 	${XRADSystem_Libraries}
 	${XRADBasic_Libraries}
+	${XRAD_Vld_Libraries}
 	)

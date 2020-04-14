@@ -18,7 +18,10 @@ XRAD_USING
 
 //--------------------------------------------------------------
 
-#ifdef XRAD_COMPILER_MSC
+#if defined(XRAD_COMPILER_MSC) && !defined(XRAD_COMPILER_CMAKE)
+
+#define XRADImmediateTest_USE_ASM
+
 #ifndef _M_X64
 
 //--------------------------------------------------------------
@@ -57,7 +60,7 @@ inline void FFTv0asm_float(complexF32 *data, size_t data_size, ftDirection direc
 //--------------------------------------------------------------
 
 #endif // _M_X64
-#endif // XRAD_COMPILER_MSC
+#endif // defined(XRAD_COMPILER_MSC) && !defined(XRAD_COMPILER_CMAKE)
 
 //--------------------------------------------------------------
 
@@ -216,7 +219,7 @@ class FFTTransformProcessor: public TransformProcessor<complex_t>
 
 //--------------------------------------------------------------
 
-#ifdef XRAD_COMPILER_MSC
+#ifdef XRADImmediateTest_USE_ASM
 class FFTv0asmTransformProcessor: public TransformProcessor<>
 {
 	public:
@@ -242,7 +245,7 @@ class FFTv0asmTransformProcessor: public TransformProcessor<>
 		ComplexFunctionF32 phasors;
 		ComplexFunctionF32 buffer;
 };
-#endif // XRAD_COMPILER_MSC
+#endif // XRADImmediateTest_USE_ASM
 
 //--------------------------------------------------------------
 
@@ -618,17 +621,17 @@ void DoTestFFT()
 	dialog->CreateControl<ValueNumberEdit<size_t>>(L"Количество потоков", SavedGUIValue(&n_threads),
 			1, numeric_limits<size_t>::max(), Layout::Horizontal);
 	enum class TransformVersion { FFT,
-#ifdef XRAD_COMPILER_MSC
+#ifdef XRADImmediateTest_USE_ASM
 		FFTv0asm,
-#endif // XRAD_COMPILER_MSC
+#endif // XRADImmediateTest_USE_ASM
 		FFTv0c, FFTCooleyTukey, FT, Null };
 	TransformVersion tr_version = TransformVersion::FFT;
 	dialog->AddControl(EnumRadioButtonChoice::Create(L"Алгоритм",
 			{
 				MakeButton(L"FFT (текущий)", TransformVersion::FFT),
-#ifdef XRAD_COMPILER_MSC
+#ifdef XRADImmediateTest_USE_ASM
 				MakeButton(L"FFTv0 (ASM)", TransformVersion::FFTv0asm),
-#endif // XRAD_COMPILER_MSC
+#endif // XRADImmediateTest_USE_ASM
 				MakeButton(L"FFTv0 (C++)", TransformVersion::FFTv0c),
 				MakeButton(L"Cooley-Tukey FFT", TransformVersion::FFTCooleyTukey),
 				MakeButton(L"\"Slow\" FT", TransformVersion::FT),
@@ -660,12 +663,12 @@ void DoTestFFT()
 					tr_creator = []() { return make_shared<FFTTransformProcessor<>>(); };
 					test_name = L"FFT";
 					break;
-#ifdef XRAD_COMPILER_MSC
+#ifdef XRADImmediateTest_USE_ASM
 				case TransformVersion::FFTv0asm:
 					tr_creator = []() { return make_shared<FFTv0asmTransformProcessor>(); };
 					test_name = L"FFTv0 (ASM)";
 					break;
-#endif // XRAD_COMPILER_MSC
+#endif // XRADImmediateTest_USE_ASM
 				case TransformVersion::FFTv0c:
 					tr_creator = []() { return make_shared<FFTv0cTransformProcessor>(); };
 					test_name = L"FFTv0 (C++)";
