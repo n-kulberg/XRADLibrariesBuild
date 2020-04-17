@@ -11,7 +11,9 @@
 #include <XRADDicomGUI/XRADDicomGUI.h>
 
 #include <iostream>
+#ifdef XRAD_COMPILER_MSC
 #include <vld.h>
+#endif // XRAD_COMPILER_MSC
 
 XRAD_USING
 

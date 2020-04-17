@@ -8,24 +8,15 @@ if("${XRAD_Root}" STREQUAL "")
 	message(FATAL_ERROR "Please, specify XRAD library sources directory (XRAD_Root).")
 endif()
 
-include(${XRAD_Root}/XRADBasic/CMake/CommonOptions.cmake)
 include(${XRAD_Root}/XRADBasic/CMake/Package.cmake)
 
 set(Project_IncludeDirs ${Project_IncludeDirs}
 	${XRAD_IncludeDir}
 	)
 
-set(Project_Sources_cpp
-	XRADBasicTest.cpp
-	)
-
-set(Project_Sources_h
-	pre.h
-	)
-
 set(Project_Sources_All
-	${Project_Sources_cpp}
-	${Project_Sources_h}
+	XRADBasicTest.cpp
+	pre.h
 	)
 
 add_executable(${Project} ${Project_Sources_All})

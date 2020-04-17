@@ -8,9 +8,6 @@ if("${XRAD_Root}" STREQUAL "")
 	message(FATAL_ERROR "Please, specify XRAD library sources directory (XRAD_Root).")
 endif()
 
-include(${XRAD_Root}/XRADBasic/CMake/CommonOptions.cmake)
-include(${XRAD_Root}/XRADBasic/CMake/Package.cmake)
-include(${XRAD_Root}/XRADSystem/CMake/Package.cmake)
 include(${XRAD_Root}/XRADGUI/CMake/Package.cmake)
 
 set(Project_IncludeDirs ${Project_IncludeDirs}
@@ -18,68 +15,60 @@ set(Project_IncludeDirs ${Project_IncludeDirs}
 	${XRAD_IncludeDir}
 	)
 
-set(Project_Sources_cpp
-    ${XRAD_Root}/XRADBasic/Tests/StringEncodeTest.cpp
-    SharpeningTest.cpp
-    TestArrays.cpp
-    TestDynamicDialog.cpp
-    TestFFT.cpp
-    TestFileOperations.cpp
-    TestFunctions.cpp
-    TestFunctionsArchive.cpp
-    TestGUIFunctions.cpp
-    TestJson.cpp
-    TestMath.cpp
-    TestMisc.cpp
-    TestPerformanceCounter.cpp
-    TestProgress.cpp
-    TestThreads.cpp
-    TrackedObject.cpp
-	)
-
-set(Project_Sources_h
-    pre.h
-    ${XRAD_Root}/XRADBasic/Tests/StringEncodeTest.h
-    ${XRAD_Root}/XRADBasic/Tests/TestHelpers.h
-    SharpeningTest.h
-    TestArrays.h
-    TestDynamicDialog.h
-    TestFFT.h
-    TestFileOperations.h
-    TestFunctions.h
-    TestFunctionsArchive.h
-    TestGUIFunctions.h
-    TestJson.h
-    TestMath.h
-    TestMisc.h
-    TestPerformanceCounter.h
-    TestProgress.h
-    TestThreads.h
-    TrackedObject.h
+set(Project_Sources
+	pre.h
+	${XRAD_Root}/XRADBasic/Tests/StringEncodeTest.cpp
+	${XRAD_Root}/XRADBasic/Tests/StringEncodeTest.h
+	${XRAD_Root}/XRADBasic/Tests/TestHelpers.h
+	SharpeningTest.cpp
+	SharpeningTest.h
+	TestArrays.cpp
+	TestArrays.h
+	TestDynamicDialog.cpp
+	TestDynamicDialog.h
+	TestFFT.cpp
+	TestFFT.h
+	TestFileOperations.cpp
+	TestFileOperations.h
+	TestFunctions.cpp
+	TestFunctions.h
+	TestFunctionsArchive.cpp
+	TestFunctionsArchive.h
+	TestGUIFunctions.cpp
+	TestGUIFunctions.h
+	TestJson.cpp
+	TestJson.h
+	TestMath.cpp
+	TestMath.h
+	TestMisc.cpp
+	TestMisc.h
+	TestPerformanceCounter.cpp
+	TestPerformanceCounter.h
+	TestProgress.cpp
+	TestProgress.h
+	TestThreads.cpp
+	TestThreads.h
+	TrackedObject.cpp
+	TrackedObject.h
 	)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
 	# TODO: TestFFT_asm.asm
-	set(Project_Sources_PlatformSpecific_cpp
-	    ${XRAD_Root}/XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.cpp
-	    ${XRAD_Root}/XRADBasic/Tests/StringConverters_MS_Test.cpp
-		)
-	set(Project_Sources_PlatformSpecific_h
-	    ${XRAD_Root}/XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.h
-	    ${XRAD_Root}/XRADBasic/Tests/StringConverters_MS_Test.h
+	set(Project_Sources_PlatformSpecific
+		${XRAD_Root}/XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.cpp
+		${XRAD_Root}/XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.h
+		${XRAD_Root}/XRADBasic/Tests/StringConverters_MS_Test.cpp
+		${XRAD_Root}/XRADBasic/Tests/StringConverters_MS_Test.h
 		)
 elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-	set(Project_Sources_PlatformSpecific_cpp)
-	set(Project_Sources_PlatformSpecific_h)
+	set(Project_Sources_PlatformSpecific)
 else()
 	message(FATAL_ERROR "Unsupported CMAKE_CXX_COMPILER_ID: \"${CMAKE_CXX_COMPILER_ID}\".")
 endif()
 
 set(Project_Sources_All
-	${Project_Sources_cpp}
-	${Project_Sources_h}
-	${Project_Sources_PlatformSpecific_cpp}
-	${Project_Sources_PlatformSpecific_h}
+	${Project_Sources}
+	${Project_Sources_PlatformSpecific}
 	)
 
 add_executable(${Project} ${XRADGUI_ExecutableOptions} ${Project_Sources_All})
@@ -87,7 +76,4 @@ target_include_directories(${Project} PRIVATE ${Project_IncludeDirs})
 target_link_libraries(${Project}
 	${XRADGUI_Libraries}
 	${XRADGUITestsLib_Libraries}
-	${XRADSystem_Libraries}
-	${XRADBasic_Libraries}
-	${XRAD_Vld_Libraries}
 	)
