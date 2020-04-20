@@ -177,7 +177,7 @@ void TestArrays1D()
 			++fi_ref_rev_it;
 		}
 
-#ifdef _DEBUG
+#ifdef XRAD_DEBUG
 		// Проверка проверок итераторов
 		{
 			auto it_1_b = fi_ref_1.begin();
@@ -452,7 +452,7 @@ void TestArrays2D()
 				--fi_ref_it_1;
 				++fi_ref_it_1;
 			}
-#ifdef _DEBUG
+#ifdef XRAD_DEBUG
 			try
 			{
 				++fi_ref_it_1; // Должен вызвать ошибку.
@@ -491,7 +491,7 @@ void TestArrays2D()
 				--fi_ref_it_1;
 				++fi_ref_it_1;
 			}
-#ifdef _DEBUG
+#ifdef XRAD_DEBUG
 			try
 			{
 				++fi_ref_it_1;

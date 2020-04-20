@@ -62,7 +62,7 @@ void AnalyzeDicomDatasource(const Dicom::datasource_t &dcm_datasrc, bool display
 
 	//wstring modality_filter(L"CT");
 	//FilterDicoms(studies_heap, LeaveCTFilter());
-#if !defined(_DEBUG)  || 1 //чтобы можно было легко включать и отключать в режиме откладки
+#if !defined(XRAD_DEBUG)  || 1 //чтобы можно было легко включать и отключать в режиме откладки
 	//FilterDicoms(studies_heap, RemoveAuxiliaryTomogramImages());
 	//FilterDicoms(studies_heap, KeepOnlyCTFilter());
 	//FilterDicoms(studies_heap, RemoveMultiframeFilter());
