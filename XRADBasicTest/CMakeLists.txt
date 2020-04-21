@@ -24,3 +24,4 @@ target_include_directories(${Project} PRIVATE ${Project_IncludeDirs})
 target_link_libraries(${Project}
 	${XRADBasic_Libraries}
 	)
+xrad_add_dependencies(${Project} "XRADBasic")

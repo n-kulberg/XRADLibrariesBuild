@@ -31,3 +31,4 @@ target_link_libraries(${Project}
 	${XRADDicomGUI_Libraries}
 	${XRADGUI_Libraries}
 	)
+xrad_add_dependencies(${Project} "XRADDicomGUI;XRADGUI")

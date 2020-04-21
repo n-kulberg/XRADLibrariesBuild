@@ -29,3 +29,7 @@ endif()
 if(Build_XRADDicomTest)
 	add_subdirectory("XRADDicomTest")
 endif()
+
+if(Build_XRAD)
+	xrad_add_xrad_project()
+endif()

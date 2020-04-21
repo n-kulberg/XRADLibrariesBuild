@@ -77,3 +77,4 @@ target_link_libraries(${Project}
 	${XRADGUI_Libraries}
 	${XRADGUITestsLib_Libraries}
 	)
+xrad_add_dependencies(${Project} "XRADGUI;XRADGUITestsLib")

@@ -24,3 +24,4 @@ target_include_directories(${Project} PRIVATE ${Project_IncludeDirs})
 target_link_libraries(${Project}
 	${XRADConsoleUI_Libraries}
 	)
+xrad_add_dependencies(${Project} "XRADConsoleUI")
