@@ -12,9 +12,9 @@
 #include <filesystem>
 #endif
 
-#ifdef _MSC_VER
+#ifdef XRAD_COMPILER_MSC
 	#include <XRADConsoleUI/Sources/PlatformSpecific/MSVC/MSVC_XRADConsoleUILink.h>
-#endif //_MSC_VER
+#endif // XRAD_COMPILER_MSC
 
 //--------------------------------------------------------------
 

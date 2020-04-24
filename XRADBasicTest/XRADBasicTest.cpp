@@ -117,7 +117,7 @@ void TestCodeCvt()
 		};
 	TestCodeCvtHelper<wchar_t, char>(test_str);
 	TestCodeCvtHelper<wchar_t, char16_t>(test_str);
-#if !(defined(_MSC_VER) && (_MSC_VER < 1924))
+#if !(defined(XRAD_COMPILER_MSC) && (_MSC_VER < 1924))
 	// Этот код в MSVC2015..2017 не линкуется из-за ошибки в runtime-библиотеках.
 	TestCodeCvtHelper<char16_t, char>(test_str);
 	TestCodeCvtHelper<char32_t, char>(test_str);
@@ -372,7 +372,7 @@ void TestParProc(ParProcTestKind test_kind, ParProcMode mode)
 
 //--------------------------------------------------------------
 
-#ifdef _MSC_VER
+#ifdef XRAD_COMPILER_MSC
 
 #pragma optimize ("", off)
 void RaiseNullPointerReference()
@@ -382,7 +382,7 @@ void RaiseNullPointerReference()
 }
 #pragma optimize ("", on)
 
-#elif defined(__GNUC__)
+#elif defined(XRAD_COMPILER_GNUC)
 
 void __attribute__((optimize("O0"))) RaiseNullPointerReference()
 {

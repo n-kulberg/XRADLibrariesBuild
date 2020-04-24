@@ -655,7 +655,7 @@ void TestFunctorButtonDecision()
 //	Тест устаревшей функции: при компиляции должно возникнуть предупреждение.
 //	20190211 Уже убедились многократно, что на VS2015 предупреждение возникает
 //	как надо. Чтобы не отвлекало, отключаем для этого компилятора
-#if _MSC_VER!=1900
+#if !(defined(XRAD_COMPILER_MSC) && _MSC_VER==1900)
 	vector<wstring> headers = { L"First", L"Cancel" };
 	vector<int> values = { 1, -1 };
 	int value = GetButtonDecision(L"Obsolete", headers, values); // Компилятор должен выдать предупреждение C4996.
