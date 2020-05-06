@@ -33,6 +33,9 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 
 		do
 		{
+#define only_any_necessary_test 0
+#if !only_any_necessary_test
+
 			auto	datasource = []()
 			{
 				wstring foldername = GetFolderNameRead(L"Get DICOM directory");
@@ -87,7 +90,9 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 					}))
 				, MakeButton("any necessary test", make_fn([]()
 					{
+#endif
 						any_necessary_test();
+#if !only_any_necessary_test
 					}))
 				, MakeButton("Exit", function<void ()>())
 			});
@@ -102,6 +107,13 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 			{
 				Error(GetExceptionStringOrRethrow());
 			}
+// 			catch(canceled_operation &ex){}
+// 			catch(quit_application &ex){}
+// 			catch (exception &ex)
+// 			{
+// 				Error(ex.what());
+// 			}
+#endif
 		} while (true);
 
 	}
