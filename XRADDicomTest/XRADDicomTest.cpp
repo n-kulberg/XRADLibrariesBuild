@@ -43,9 +43,6 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 							MakeButton(L"Read and update index", make_fn([]()
 									{ return Dicom::datasource_folder::mode_t::read_and_update_index; }))
 									.SetDefault(Dicom::datasource_folder::mode_t::read_and_update_index == default_mode),
-							MakeButton(L"Just read index, no update", make_fn([]()
-									{ return Dicom::datasource_folder::mode_t::read_index_as_is; }))
-									.SetDefault(Dicom::datasource_folder::mode_t::read_and_update_index == default_mode),
 							MakeButton(L"Don't use index", make_fn([]()
 									{ return Dicom::datasource_folder::mode_t::no_index; }))
 									.SetDefault(Dicom::datasource_folder::mode_t::no_index == default_mode),
@@ -58,7 +55,12 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 
 			auto option = GetButtonDecision("Choose option",
 			{
-				MakeButton("Analyze DICOM just view", make_fn([&datasource]()
+/*
+				MakeButton(L"Analyze DICOM open, view, modify, save", make_fn([]()
+					{
+						AnalyzeDicomDatasource(*GetDicomDataSource(), true, true, true);
+					}))
+				,*/ MakeButton("Analyze DICOM just view", make_fn([&datasource]()
 					{
 						AnalyzeDicomDatasource(datasource(), true, false, false);
 					}))
