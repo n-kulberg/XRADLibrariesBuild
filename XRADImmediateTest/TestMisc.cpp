@@ -11,7 +11,7 @@
 #include <XRADBasic/Tests/TestHelpers.h>
 #include <XRADBasic/Tests/StringEncodeTest.h>
 #include <XRADBasic/Tests/StringConverters_MS_Test.h>
-#include <XRADGUI/Tests/StringConverters_Qt_Test.h>
+#include <XRADQt/Tests/QtStringConverters_Test.h>
 
 #ifdef XRAD_COMPILER_MSC
 #include <XRADGUI/Sources/PlatformSpecific/MSVC/MSVC_XRADGUITestsLibLink.h>
@@ -489,7 +489,7 @@ void	TestUnicode()
 #ifdef XRAD_USE_MS_VERSION
 		StringConverters_MS_Test::Test(&error_reporter);
 #endif
-		StringConverters_Qt_Test::Test(&error_reporter);
+		QtStringConverters_Test::Test(&error_reporter);
 		printf("Batch Unicode tests finished.\n");
 	}
 //	size_t	value = 1;
