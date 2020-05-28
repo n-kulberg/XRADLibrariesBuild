@@ -104,9 +104,8 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 
 	}
 
-	catch(runtime_error &ex){}
-	catch(canceled_operation &ex){}
-
+	catch(runtime_error &){}
+	catch(canceled_operation &){}
 	catch(quit_application &ex)
 	{
 		cout << "\n" << ex.what() << ", exit code = " << ex.exit_code;
