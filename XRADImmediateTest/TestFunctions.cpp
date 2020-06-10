@@ -846,6 +846,10 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 
 	try
 	{
+		SetVersionInfo(
+			"XRADImmediateTest version 0.0.99\n"
+			"XRAD library test application.");
+
 		printf("command string arguments:\n");
 		for(int i = 0; i < in_argc; ++i)
 		{
