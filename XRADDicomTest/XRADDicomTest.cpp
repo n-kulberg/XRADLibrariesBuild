@@ -33,23 +33,23 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 
 		do
 		{
-#define only_any_necessary_test 0
-#if !only_any_necessary_test
-
 			auto	datasource = []()
 			{
 				wstring foldername = GetFolderNameRead(L"Get DICOM directory");
 //				Dicom::datasource_folder data_src(foldername, YesOrNo("Analyze subdirectories?"));
-				constexpr auto default_mode = Dicom::datasource_folder::Mode::Default;
-				Dicom::datasource_folder::Mode mode = GetButtonDecision(L"DICOM search mode",
+				constexpr auto default_mode = Dicom::datasource_folder::mode_t::default_mode;
+				Dicom::datasource_folder::mode_t mode = GetButtonDecision(L"DICOM search mode",
 						{
 							MakeButton(L"Read and update index", make_fn([]()
-									{ return Dicom::datasource_folder::Mode::Index; }))
-									.SetDefault(Dicom::datasource_folder::Mode::Index == default_mode),
+									{ return Dicom::datasource_folder::mode_t::read_and_update_index; }))
+									.SetDefault(Dicom::datasource_folder::mode_t::read_and_update_index == default_mode),
+							MakeButton(L"Read index as is", make_fn([]()
+									{ return Dicom::datasource_folder::mode_t::read_index_as_is; }))
+									.SetDefault(Dicom::datasource_folder::mode_t::read_index_as_is == default_mode),
 							MakeButton(L"Don't use index", make_fn([]()
-									{ return Dicom::datasource_folder::Mode::NoIndex; }))
-									.SetDefault(Dicom::datasource_folder::Mode::NoIndex == default_mode),
-							MakeButton(L"Cancel", make_fn([]() -> Dicom::datasource_folder::Mode
+									{ return Dicom::datasource_folder::mode_t::no_index; }))
+									.SetDefault(Dicom::datasource_folder::mode_t::no_index == default_mode),
+							MakeButton(L"Cancel", make_fn([]() -> Dicom::datasource_folder::mode_t
 									{ throw canceled_operation("Operation canceled."); }))
 						})();
 				Dicom::datasource_folder result(foldername, true, mode);
@@ -58,12 +58,7 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 
 			auto option = GetButtonDecision("Choose option",
 			{
-/*
-				MakeButton(L"Analyze DICOM open, view, modify, save", make_fn([]()
-					{
-						AnalyzeDicomDatasource(*GetDicomDataSource(), true, true, true);
-					}))
-				,*/ MakeButton("Analyze DICOM just view", make_fn([&datasource]()
+				MakeButton("Analyze DICOM just view", make_fn([&datasource]()
 					{
 						AnalyzeDicomDatasource(datasource(), true, false, false);
 					}))
@@ -90,9 +85,7 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 					}))
 				, MakeButton("any necessary test", make_fn([]()
 					{
-#endif
 						any_necessary_test();
-#if !only_any_necessary_test
 					}))
 				, MakeButton("Exit", function<void ()>())
 			});
@@ -103,17 +96,16 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 			{
 				option();
 			}
-			catch (runtime_error &ex)
-			{}
-			catch(canceled_operation &ex){}
-#endif
+			catch(...)
+			{
+				Error(GetExceptionStringOrRethrow());
+			}
 		} while (true);
 
 	}
 
-	catch(runtime_error &ex){}
-	catch(canceled_operation &ex){}
-
+	catch(runtime_error &){}
+	catch(canceled_operation &){}
 	catch(quit_application &ex)
 	{
 		cout << "\n" << ex.what() << ", exit code = " << ex.exit_code;
