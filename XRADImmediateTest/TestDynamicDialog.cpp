@@ -458,6 +458,7 @@ shared_ptr<DialogTestData> CreateTestDialog()
 				L"Item 2",
 				L"Item 3",
 			}), 1,
+			Layout::Vertical,
 			[](size_t item_index)
 			{
 				printf("Combo item changed: %zu.\n", EnsureType<size_t>(item_index));
@@ -494,6 +495,7 @@ shared_ptr<DialogTestData> CreateTestDialog()
 				MakeButton(L"N2", Choices1::N2)
 			},
 			combo_e_value.get(),
+			Layout::Horizontal,
 			[rb_e_choice](Choices1 c)
 			{
 				string c_str = "Invalid";
