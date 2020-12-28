@@ -253,8 +253,8 @@ public:
 		constexpr file_size_t ExpectedFileSize = 8;
 		auto f_sz = filesize(file.c_file());
 		result(f_sz == ExpectedFileSize);
-		printf("File size: %" PRIi64 "%s\n",
-				EnsureType<int64_t>(f_sz),
+		printf("File size: %" PRIu64 "%s\n",
+				EnsureType<uint64_t>(f_sz),
 				result_str(f_sz == ExpectedFileSize));
 		file.close();
 
