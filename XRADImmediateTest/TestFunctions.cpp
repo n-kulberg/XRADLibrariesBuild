@@ -18,6 +18,7 @@
 #include <XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.h>
 #endif // XRAD_COMPILER_MSC
 #include <XRADBasic/Sources/Utils/ValuePredicates.h>
+#include <XRADGUI/Sources/RasterImageFile/RasterImageFile.h>
 #include <iostream>
 #include <cmath>
 #include <thread>
@@ -838,6 +839,22 @@ void TestRound()
 	TestRoundItem<int>(numeric_limits<double>::signaling_NaN(), false, 0);
 }
 
+
+void	TestRasterImageFile()
+{
+	wstring	filename = GetFileNameRead(L"Open graphic file", saved_default_value);
+
+	RasterImageFile img(filename);
+
+	RealFunction2D_F32 tmp1;
+	img.GetChannel(RasterImageFile::color_type::e_H, tmp1);
+
+	//	ColorImageI32 tmp;
+	//	img.GetRGB(tmp);
+
+	DisplayMathFunction2D(tmp1, "ttt");
+}
+
 //--------------------------------------------------------------
 
 int xrad::xrad_main(int in_argc, char *in_argv[])
@@ -871,6 +888,7 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 						MakeButton(L"Text handling", func(TestTextHandling)),
 						MakeButton(L"I/O and file operations test", func(TestIO)),
 						MakeButton(L"GUI", func(TestGUIFunctions)),
+						MakeButton(L"Raster image file", func(TestRasterImageFile)),
 						MakeButton(L"Performance counter", func(TestPerformanceCounter)),
 						MakeButton(L"Threads", func(TestThreads)),
 						MakeButton(L"Round", func(TestRound)),
