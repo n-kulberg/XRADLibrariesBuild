@@ -108,79 +108,107 @@ void	TestRasters()
 	int	vs = 321;
 	int	hs = 171;
 
-	RealFunction2D_F32	rf(vs, hs);
-	//	RealFunction2D_UI8	pixmap(vs,hs);
-	//	DataArray2D<DataArray<ColorPixel> >	pixmap(vs,hs);
-
-	ColorImageF32	pixmap(vs, hs);
-	//	ColorImage<ColorSampleF32, double>	pixmap(vs,hs);
-	DataArray2D<DataArray<float> >	pixmap_gs(vs, hs);
-	DataArray2D<DataArray<complexF32> > pixmap_c(vs, hs);
-
-	for (int i = 0; i < vs; i++)
+	for (;;)
 	{
-		double	y = double(i) / vs * pi();
-		for (int j = 0; j < hs; ++j)
+		enum { view_exit, view_grayscale, view_complex, view_rgb };
+		auto view_option = GetButtonDecision("Select raster source",
+				{
+					MakeButton(L"Grayscale", view_grayscale),
+					MakeButton(L"Complex", view_complex),
+					MakeButton(L"RGB", view_rgb),
+					MakeButton(L"Exit", view_exit),
+				});
+		if (view_option == view_exit)
+			break;
+		switch (view_option)
 		{
-			//			double	x = ((4.*i)/vs) * double(j)/hs * pi();
-			double	x = double(j) / hs * pi();
-			double val = (sin(16 * x)*sin(6 * y) + 1) * 128;
-			rf.at(i, j) = val;
-			double factor = 0.05;
-			pixmap_c.at(i, j).re = pixmap.at(i, j).red() = factor*((1 + sin(4 * x)) + RandomUniformF64(0, 1.2));
-			pixmap_c.at(i, j).im = pixmap.at(i, j).green() = factor*((1 + cos(8 * y)) + RandomUniformF64(0, 2.5));//255-val;
-			pixmap.at(i, j).blue() = val;//RandomUniformF64(0,255);
-//			pixmap.at(i,j).alpha() = j;
-
-			pixmap_gs.at(i, j) = val / 100 - 1;
+			case view_grayscale:
+			{
+				DataArray2D<DataArray<float> >	pixmap_gs(vs, hs);
+				for (int i = 0; i < vs; i++)
+				{
+					double	y = double(i) / vs * pi();
+					for (int j = 0; j < hs; ++j)
+					{
+						double	x = double(j) / hs * pi();
+						double val = (sin(16 * x)*sin(6 * y) + 1) * 128;
+						pixmap_gs.at(i, j) = val / 100 - 1;
+					}
+				}
+				DisplayMathFunction2D(pixmap_gs, "grayscale", ScanFrameSector(cm(6), cm(12), degrees(-30), degrees(20)));
+				break;
+			}
+			case view_complex:
+			{
+				DataArray2D<DataArray<complexF32> > pixmap_c(vs, hs);
+				for (int i = 0; i < vs; i++)
+				{
+					double	y = double(i) / vs * pi();
+					for (int j = 0; j < hs; ++j)
+					{
+						double	x = double(j) / hs * pi();
+						double factor = 0.05;
+						complexF32 cv;
+						cv.re = factor*((1 + sin(4 * x)) + RandomUniformF64(0, 1.2));
+						cv.im = factor*((1 + cos(8 * y)) + RandomUniformF64(0, 2.5));//255-val;
+						cv *= polar(1, 0.5*i*pi()); // добавляем осцилляцию
+						pixmap_c.at(i, j) = cv;
+					}
+				}
+				DisplayMathFunction2D(pixmap_c, "complex", ScanFrameSector(cm(6), cm(12), degrees(-20), degrees(20)));
+				break;
+			}
+			case view_rgb:
+			{
+				ColorImageF32	pixmap_rgb(vs, hs);
+				for (int i = 0; i < vs; i++)
+				{
+					double	y = double(i) / vs * pi();
+					for (int j = 0; j < hs; ++j)
+					{
+						double	x = double(j) / hs * pi();
+						double val = (sin(16 * x)*sin(6 * y) + 1) * 128;
+						double factor = 0.05;
+						pixmap_rgb.at(i, j).red() = factor*((1 + sin(4 * x)) + RandomUniformF64(0, 1.2));
+						pixmap_rgb.at(i, j).green() = factor*((1 + cos(8 * y)) + RandomUniformF64(0, 2.5));//255-val;
+						pixmap_rgb.at(i, j).blue() = val;//RandomUniformF64(0,255);
+			//			pixmap_rgb.at(i,j).alpha() = j;
+					}
+				}
+				DisplayMathFunction2D(pixmap_rgb, "rgb", ScanFrameSector(cm(6), cm(12), degrees(-10), degrees(20)));
+				break;
+			}
 		}
 	}
 
-	ColorPixel	p(23);
+	if (0)
+	{
+		ColorFunctionF32	cf(100, ColorSampleF32(0));
+		cf /= 2;
+		cf += ColorSampleF32(1, 1, 1);
+		//	cf += 1.;
+		cf += cf;
 
-	ColorSampleF32 s1(100), s2(100), s3(100);
-	ColorSampleF32 p2(100);
-	s2 = s1 += p2;
-	s3 = p2 += s1;
-	s3 += 1;
-	//	p2 = s1 += p2;
+		red(cf) *= 2;
+		green(cf) /= 2;
+		//
+		blue(cf[0]) *= 2;
+		cf[0].red() /= 2;
 
-	ColorFunctionF32	cf(100, ColorSampleF32(0));
-	cf /= 2;
-	cf += ColorSampleF32(1, 1, 1);
-	//	cf += 1.;
-	cf += cf;
+		cf.red() += 3.141926f;
+		cf.green() += 2.718281828f;
 
-	//pixmap += pixmap;
-//	pixmap += ColorPixel(100);
+		RealFunctionF32 part;
+		cf.GetRed(part);
 
-	DisplayMathFunction2D(pixmap_gs, "gs", ScanFrameSector(cm(6), cm(12), degrees(-30), degrees(20)));
-	DisplayMathFunction2D(pixmap_c, "complex", ScanFrameSector(cm(6), cm(12), degrees(-20), degrees(20)));
-	DisplayMathFunction2D(pixmap, "rgb", ScanFrameSector(cm(6), cm(12), degrees(-10), degrees(20)));
-	//	return;
+		part.fill(0);
 
-	red(cf) *= 2;
-	green(cf) /= 2;
-	//
-	blue(cf[0]) *= 2;
-	cf[0].red() /= 2;
-
-
-	cf.red() += 3.141926f;
-	cf.green() += 2.718281828f;
-
-	//	RealFunction2D_F32::ref_invariable part;
-	//	RealFunction2D_F32 part;
-	RealFunctionF32 part;
-	cf.GetRed(part);
-
-	part.fill(0);
-
-	//	DisplayMathFunction2D(cf, "Color function", ScanFrameRectangle(cm(5), cm(5)));
-	DisplayMathFunction(cf, 0, 1, "Color function");
-	// 	DisplayMathFunction(part, "Complex function real", ScanFrameRectangle(cm(5), cm(5)));
-	// 	DisplayMathFunction(imag(cf), "Complex function imag", ScanFrameRectangle(cm(5), cm(5)));
-	// 	DisplayMathFunction2D(rf, "Real function", ScanFrameRectangle(cm(5), cm(5)));
+		//	DisplayMathFunction2D(cf, "Color function", ScanFrameRectangle(cm(5), cm(5)));
+		DisplayMathFunction(cf, 0, 1, "Color function");
+		// 	DisplayMathFunction(part, "Complex function real", ScanFrameRectangle(cm(5), cm(5)));
+		// 	DisplayMathFunction(imag(cf), "Complex function imag", ScanFrameRectangle(cm(5), cm(5)));
+		// 	DisplayMathFunction2D(rf, "Real function", ScanFrameRectangle(cm(5), cm(5)));
+	}
 }
 
 //--------------------------------------------------------------
