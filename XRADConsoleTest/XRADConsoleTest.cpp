@@ -152,7 +152,7 @@ void PrintDirectoryContent(const wstring &path, const DirectoryContentInfo &dir_
 		{
 			printf("  file:\n");
 			printf("    name = \"%s\"\n", EnsureType<const char*>(convert_to_string(f.filename).c_str()));
-			printf("    size = %llu\n", EnsureType<unsigned long long>(f.size));
+			printf("    size = %" PRIu64 "\n", EnsureType<std::uint64_t>(f.size));
 			printf("    time = %s\n", EnsureType<const char*>(TimeToString(f.time_write).c_str()));
 		}
 		else
