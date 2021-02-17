@@ -197,13 +197,17 @@
     <ClCompile Include="TestFunctions.cpp" />
     <ClCompile Include="TestFunctionsArchive.cpp" />
     <ClCompile Include="TestGUIFunctions.cpp" />
+    <ClCompile Include="TestHandy.cpp" />
     <ClCompile Include="TestJson.cpp" />
     <ClCompile Include="TestMath.cpp" />
     <ClCompile Include="TestMisc.cpp" />
+    <ClCompile Include="TestMoveSemantics.cpp" />
     <ClCompile Include="TestPerformanceCounter.cpp" />
     <ClCompile Include="TestProgress.cpp" />
+    <ClCompile Include="TestTextHandling.cpp" />
     <ClCompile Include="TestThreads.cpp" />
     <ClCompile Include="TrackedObject.cpp" />
+    <ClCompile Include="XRADImmediateTest.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="XRADImmediateTest.bmp" />
@@ -222,11 +226,14 @@
     <ClInclude Include="TestFunctions.h" />
     <ClInclude Include="TestFunctionsArchive.h" />
     <ClInclude Include="TestGUIFunctions.h" />
+    <ClInclude Include="TestHandy.h" />
     <ClInclude Include="TestJson.h" />
     <ClInclude Include="TestMath.h" />
     <ClInclude Include="TestMisc.h" />
+    <ClInclude Include="TestMoveSemantics.h" />
     <ClInclude Include="TestPerformanceCounter.h" />
     <ClInclude Include="TestProgress.h" />
+    <ClInclude Include="TestTextHandling.h" />
     <ClInclude Include="TestThreads.h" />
     <ClInclude Include="TrackedObject.h" />
   </ItemGroup>

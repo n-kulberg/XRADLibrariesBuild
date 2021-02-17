@@ -24,8 +24,8 @@ namespace
 // 		if (ControlPressed()) Pause();
 // 	}
 // 	progress.end();
-// 
-// 
+//
+//
 // 	const int count3 = 3;
 // 	progress.start("Тестирование индикатора прогресса", count / count3);
 // 	for (int i = 0; i < count / count3; i++)
@@ -83,7 +83,7 @@ void TestRandomProgress()
 }
 
 //--------------------------------------------------------------
-// 
+//
 // void TestProgressWithSubOldStyle()
 // {
 // 	// Тест устаревшего способа создания подпрогрессов
@@ -91,10 +91,10 @@ void TestRandomProgress()
 // 	int count2 = 10;
 // 	physical_time desired_time = sec(10);
 // 	physical_time dt = desired_time / (count1*count2);
-// 
+//
 // 	GUIStepProgressBar progress;
 // 	progress.start("Тестирование индикатора прогресса", count1);
-// 
+//
 // 	for (int i = 0; i < count1; i++)
 // 	{
 // 		RunSubprogress_2Sub(count2, dt, progress.subprogress(i, i+1));
@@ -115,10 +115,10 @@ void TestRandomProgress()
 // 	int count2 = 10;
 // 	physical_time desired_time = sec(10);
 // 	physical_time dt = desired_time / (count1*count2);
-// 
+//
 // 	StepProgressBar progress(GUIProgressProxy());
 // 	progress.start("Тестирование индикатора прогресса", count1); // не указано 2 подпрогресса
-// 
+//
 // 	for (int i = 0; i < count1; i++)
 // 	{
 // 		RunSubprogress_2Sub(count2, dt, progress.subprogress(i,i+1));
@@ -179,6 +179,44 @@ void TestProgressSubMethod()
 
 //--------------------------------------------------------------
 
+void TestAutoProgressScheduler()
+{
+//	Операция, занимающая N*d миллисекунд
+	auto	lambda = [](int N, int d, ProgressProxy pp)
+	{
+		ProgressBar	p(pp);
+		p.start("Processing", N);
+		for (int i = 0; i < N; ++i)
+		{
+			Delay(msec(d));
+			++p;
+		}
+		//		Pause();
+	};
+	RandomProgressBar	p(GUIProgressProxy());
+	int	slow_delay(500), fast_delay(100);
+
+	bool	proportional_init = false;
+	//	Начальные значения имеют смысл только при удаленной ветке
+	//	HKEY_CURRENT_USER\Software\XRAD\XRADImmediateTest.exe\AutoProgressScheduler\TestSubprogress
+	//	При proportional_init = true прогресс двигается равномерно сразу (время выполнения 18 с, прогноз сразу верный)
+	//	При proportional_init = false прогресс вначале движется быстро, прогноз 6 с, потом замедляется и вырастает до 18
+	//	После нескольких запусков ситуация выравнивается.
+	//	Быстрота автоподстройки определяется параметром AutoProgressScheduler::auto_tune_speed.
+	//	Если эта величина слишком близка к 1, прогресс станет подвержен случайным изменениям от вызова к вызову и вновь станет нестабильным.
+	AutoProgressIndicatorScheduler scheduler(L"TestSubprogress",
+	{
+		ProgressOperation(L"fast", proportional_init ? fast_delay : 50, true),
+		ProgressOperation(L"slow", proportional_init ? slow_delay : 50, true),
+	});
+	scheduler.SetAutoTuneSpeed(0.75);
+	p.start("Fast, slow", scheduler.n_steps());
+	scheduler.run_and_register_cost(0, p, [&lambda, &fast_delay](auto subpp) {lambda(30, fast_delay, subpp); });
+	scheduler.run_and_register_cost(1, p, [&lambda, &slow_delay](auto subpp) {lambda(30, slow_delay, subpp); });
+}
+
+//--------------------------------------------------------------
+
 } // namespace
 
 //--------------------------------------------------------------
@@ -194,6 +232,7 @@ void TestProgress()
 		//	MakeButton(L"Progress bar with sub (old style)", make_fn(TestProgressWithSubOldStyle)),
 		//	MakeButton(L"Progress bar with sub (old style, buggy)", make_fn(TestProgressWithSubOldStyleBuggy)),
 			MakeButton(L"Progress bar with sub method", make_fn(TestProgressSubMethod)),
+			MakeButton(L"Auto progress scheduler", make_fn(TestAutoProgressScheduler)),
 			MakeButton(L"Cancel", function<void()>())
 		});
 		if (!experiment)

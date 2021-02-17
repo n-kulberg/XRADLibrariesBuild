@@ -8,6 +8,7 @@
 
 XRAD_BEGIN
 
+void TestRound();
 void TestMathFunctions();
 
 XRAD_END

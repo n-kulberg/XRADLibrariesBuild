@@ -63,14 +63,26 @@
     <ClCompile Include="TestPerformanceCounter.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
-    <ClCompile Include="pre.cpp">
-      <Filter>Sources</Filter>
-    </ClCompile>
     <ClCompile Include="$(XRADRoot)\XRADBasic\Tests\StringConverters_MS_Test.cpp">
       <Filter>XRADBasic\Tests</Filter>
     </ClCompile>
     <ClCompile Include="$(XRADRoot)\XRADBasic\Tests\StringEncodeTest.cpp">
       <Filter>XRADBasic\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="pre.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="XRADImmediateTest.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestHandy.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMoveSemantics.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestTextHandling.cpp">
+      <Filter>Sources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -119,8 +131,8 @@
     <ClInclude Include="TestPerformanceCounter.h">
       <Filter>Sources</Filter>
     </ClInclude>
-    <ClInclude Include="pre.h">
-      <Filter>Sources</Filter>
+    <ClInclude Include="$(XRADRoot)\XRADBasic\Sources\PlatformSpecific\MSVC\XRADNatvisTest.h">
+      <Filter>XRADBasic\Sources/PlatformSpecific/MSVC</Filter>
     </ClInclude>
     <ClInclude Include="$(XRADRoot)\XRADBasic\Tests\StringConverters_MS_Test.h">
       <Filter>XRADBasic\Tests</Filter>
@@ -131,8 +143,17 @@
     <ClInclude Include="$(XRADRoot)\XRADBasic\Tests\TestHelpers.h">
       <Filter>XRADBasic\Tests</Filter>
     </ClInclude>
-    <ClInclude Include="$(XRADRoot)\XRADBasic\Sources\PlatformSpecific\MSVC\XRADNatvisTest.h">
-      <Filter>XRADBasic\Sources/PlatformSpecific/MSVC</Filter>
+    <ClInclude Include="pre.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestHandy.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMoveSemantics.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTextHandling.h">
+      <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

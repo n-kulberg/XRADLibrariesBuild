@@ -1,8 +1,8 @@
-﻿#ifndef File__TestFunctions_h
-#define File__TestFunctions_h
+﻿#ifndef File__TestTextHandling_h
+#define File__TestTextHandling_h
 //--------------------------------------------------------------
 
-void TestFunctions();
+void TestTextHandling();
 
 //--------------------------------------------------------------
-#endif // File__TestFunctions_h
+#endif // File__TestTextHandling_h
