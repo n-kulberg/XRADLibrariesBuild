@@ -72,6 +72,18 @@
     <ClCompile Include="pre.cpp">
       <Filter>Sources</Filter>
     </ClCompile>
+    <ClCompile Include="XRADImmediateTest.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestHandy.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestMoveSemantics.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+    <ClCompile Include="TestTextHandling.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SharpeningTest.h">
@@ -132,6 +144,15 @@
       <Filter>XRADBasic\Tests</Filter>
     </ClInclude>
     <ClInclude Include="pre.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestHandy.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestMoveSemantics.h">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="TestTextHandling.h">
       <Filter>Sources</Filter>
     </ClInclude>
   </ItemGroup>

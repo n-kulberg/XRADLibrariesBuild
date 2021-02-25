@@ -72,12 +72,22 @@ void TestFileNamePattern()
 	// Фильтры вида "*." + расширение.
 	TestFileNamePatternMatch1(
 			L"*.a",
-			{ L"f.a", L"f.b.a" },
+			{ L"f.a", L"f.A", L"f.b.a" },
 			{ L".a", L"f.b", L"f", L"f.ab", L"f.a.b", L"" },
 			&error);
 	TestFileNamePatternMatch1(
+			L"*.ab",
+			{ L"f.ab", L"f.AB", L"f.Ab", L"f.aB", L"f.b.ab" },
+			{ L".a", L"f.b", L"f", L"f.a", L"f.a.b", L"" },
+			&error);
+	TestFileNamePatternMatch1(
+			L"*.AB",
+			{ L"f.ab", L"f.AB", L"f.Ab", L"f.aB", L"f.b.ab" },
+			{ L".a", L"f.b", L"f", L"f.a", L"f.a.b", L"" },
+			&error);
+	TestFileNamePatternMatch1(
 			L"*.a.b",
-			{ L"f.a.b" },
+			{ L"f.a.b", L"f.A.B", L"f.A.b", L"f.a.B" },
 			{ L".a.b", L"f.a", L"f.b.a", L"f.b", L"f", L"f.ab", L"f.a.bc", L"f.a.b.c", L"" },
 			&error);
 	TestFileNamePatternMatch1(L" *.a ", { L"f.a" }, { L"f.b", L"" }, &error);
@@ -112,13 +122,42 @@ void TestFileNamePattern()
 			{ L"f.x", L""},
 			&error);
 
+	// Фильтр "filename.ext",
+	TestFileNamePatternMatch1(
+			L"name",
+			{ L"name", L"NAME", L"NaMe", L"nAmE" },
+			{ L"other", L"name.", L"name.ext", L"a.name", L" name", L"name ", L"" },
+			&error);
+	TestFileNamePatternMatch1(
+			L"name.ext",
+			{ L"name.ext", L"NAME.EXT" },
+			{ L"other", L"name", L"name.", L"ext", L".ext",
+				L"xname.ext", L"name.extx", L"x.name.ext", L"name.ext.x",
+				L" name.ext", L"name.ext ", L"name .ext", L"" },
+			&error);
+	TestFileNamePatternMatch1(
+			L"name.",
+			{ L"name.", L"NAME." },
+			{ L"name", L"other", L"name.ext", L"a.name", L"" },
+			&error);
+	TestFileNamePatternMatch1(
+			L".name",
+			{ L".name", L".NAME" },
+			{ L"name", L"other", L"name.", L"name.ext", L"a.name", L"" },
+			&error);
+	TestFileNamePatternMatch1(
+			L" name",
+			{ L" name", L" NAME" },
+			{ L"name", L"other", L"name.", L"name.ext", L"a.name", L"" },
+			&error);
+	TestFileNamePatternMatch1(L" ", { L" " }, { L"~", L"", L"  " }, &error);
+	TestFileNamePatternMatch1(L"  ", { L"  " }, { L"~", L"", L" " }, &error);
+
 	// Недопустимые фильтры (игнорируются, получается пустой фильтр).
 	TestFileNamePatternMatch1(L"*.a?", { L"~", L"" }, {}, &error);
 	TestFileNamePatternMatch1(L"*.a*", { L"~", L"" }, {}, &error);
 	TestFileNamePatternMatch1(L"*.a/", { L"~", L"" }, {}, &error);
 	TestFileNamePatternMatch1(L"*.a\\", { L"~", L"" }, {}, &error);
-	TestFileNamePatternMatch1(L" ", { L"~", L"" }, {}, &error);
-	TestFileNamePatternMatch1(L"  ", { L"~", L"" }, {}, &error);
 
 	if (error)
 		printf("Test failed.\n");

@@ -6,7 +6,7 @@
 	\date 2018/07/05 17:21
 	\author kulberg
 
-	\brief  
+	\brief
 */
 
 XRAD_BEGIN
@@ -14,7 +14,6 @@ XRAD_BEGIN
 void	TestPredicates();
 void	TestDigits();
 void	TestHandy();
-void	TestTextHandling();
 
 
 

@@ -36,20 +36,27 @@ set(Project_Sources
 	TestFunctionsArchive.h
 	TestGUIFunctions.cpp
 	TestGUIFunctions.h
+	TestHandy.cpp
+	TestHandy.h
 	TestJson.cpp
 	TestJson.h
 	TestMath.cpp
 	TestMath.h
 	TestMisc.cpp
 	TestMisc.h
+	TestMoveSemantics.cpp
+	TestMoveSemantics.h
 	TestPerformanceCounter.cpp
 	TestPerformanceCounter.h
 	TestProgress.cpp
 	TestProgress.h
+	TestTextHandling.cpp
+	TestTextHandling.h
 	TestThreads.cpp
 	TestThreads.h
 	TrackedObject.cpp
 	TrackedObject.h
+	XRADImmediateTest.cpp
 	)
 
 if(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
