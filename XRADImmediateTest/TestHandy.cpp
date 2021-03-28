@@ -19,6 +19,8 @@
 using namespace xrad;
 void TestHandy()
 {
+	auto img = GetPainting(L"Нарисуйте картинку", 512, 512);
+	DisplayMathFunction2D(img, L"Картинка");
 }
 
 //--------------------------------------------------------------
