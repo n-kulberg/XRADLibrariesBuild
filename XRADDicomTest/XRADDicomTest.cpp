@@ -79,6 +79,12 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 					{
 						TestSpongeSimulation();
 					}))
+
+				, MakeButton("Radon test", make_fn([]()
+					{
+						CTRadonTest();
+					}))
+
 				, MakeButton("any necessary test", make_fn([]()
 					{
 						any_necessary_test();
