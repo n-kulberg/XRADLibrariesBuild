@@ -212,63 +212,6 @@ vector<Dicom::tag_t> fillTagListToDownload_burashov()
 }
 
 
-void UUID_generation()
-{
-	wstring strTmp;
-
-	strTmp += L"DCMTK UUIDs:\n";
-	strTmp += L"Study:\t" + Dicom::generateUUID(Dicom::UUID_level::study) + L"\n";
-	strTmp += L"Series:\t" + Dicom::generateUUID(Dicom::UUID_level::series) + L"\n";
-	strTmp += L"Instance:\t" + Dicom::generateUUID(Dicom::UUID_level::instance) + L"\n";
-	strTmp += L"Other:\t" + Dicom::generateUUID(Dicom::UUID_level::other) + L"\n";
-
-	strTmp += L"\n2.25:\n";
-	wstring prefTst(L"2.25");
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	strTmp += L"Series " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::series, prefTst) + L"\n";
-	strTmp += L"Instance " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::instance, prefTst) + L"\n";
-	strTmp += L"Other " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::other, prefTst) + L"\n";
-	strTmp += L"Other " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::other, prefTst + L".3.5.6") + L"\n";
-
-	strTmp += L"\nSpecific:\n";
-	prefTst  = L"1.2.643.5.4.5";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	strTmp += L"Series " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::series, prefTst) + L"\n";
-	strTmp += L"Instance " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::instance, prefTst) + L"\n";
-	strTmp += L"Other " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::other, prefTst) + L"\n";
-	strTmp += L"Other " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::other, prefTst + L".3.5.6") + L"\n";
-	strTmp += L"Other " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::other, prefTst + L".1.5") + L"\n";
-
-	strTmp += L"\nTest of incorrect:\n";
-	prefTst = L"2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"2.25..";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"2.25...";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"2.25....";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-
-	prefTst = L".2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"..2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"...2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"....2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-
-	prefTst = L".2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"..2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"...2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-	prefTst = L"....2.25.";
-	strTmp += L"Study " + prefTst + L":\t\t" + Dicom::generateUUID(Dicom::UUID_level::study, prefTst) + L"\n";
-
-	ShowString(L"UUID generating tst", strTmp);
-}
 
 void any_necessary_test()
 {
