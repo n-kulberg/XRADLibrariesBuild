@@ -9,8 +9,11 @@
 #include <XRADDicom/XRADDicom.h>
 #include <XRADDicomGUI/XRADDicomGUI.h>
 #include <XRADSystem/CFile.h>
+
 #include <sstream>
 #include <string>
+
+#include "RadonTest.h"
 
 XRAD_USING
 
@@ -207,124 +210,7 @@ vector<Dicom::tag_t> fillTagListToDownload_burashov()
 	delete_duplicates_tags(tagListToDownload);
 	return tagListToDownload;
 }
-vector<Dicom::tag_t> fillTagListToDownload_andreychenko()
-{
-	vector<Dicom::tag_t> tagListToDownload{ fillTagListToDownload_IDs() };
 
-	vector<Dicom::tag_t> vecTmp
-	{
-		//data for anonymization
-		//DistortStudyDate(const instance &original, const instance_cache &higher_level_prototype, const anonymizer_settings::level &settings)
-		Dicom::e_study_date,
-		Dicom::e_study_comment,
-
-		//DistortSeriesDates(const instance &original, const instance_cache &higher_level_prototype, const anonymizer_settings::level &settings)
-		Dicom::e_series_date,
-		Dicom::e_instance_creation_date,
-		Dicom::e_instance_creation_time,
-
-		//DistortAcquisitionDates(const instance &original, const instance_cache &higher_level_prototype, const anonymizer_settings::level &settings)
-		Dicom::e_acquisition_date,
-		Dicom::e_acquisition_date_time,
-		Dicom::e_content_date,
-
-		Dicom::e_scheduled_procedure_step_start_date,
-		Dicom::e_scheduled_procedure_step_end_date,
-		Dicom::e_performed_procedure_step_start_date,
-
-		//DistortClinicData(const instance &original, const anonymizer_settings::level &settings)
-		Dicom::e_institution_name,
-		Dicom::e_institution_address,
-		Dicom::e_institutional_department_name,
-		Dicom::e_station_name,
-		Dicom::e_physician_name,
-		Dicom::e_device_serial_number,
-		Dicom::e_manufacturer,
-
-		//DistortPersonalData(const instance &original, const anonymizer_settings::level &settings)
-		//part_to_distort = GetDataelementsUtil(
-		Dicom::e_patient_name,
-		Dicom::e_patient_id,
-		Dicom::e_patient_birthdate,
-		Dicom::e_patient_age,
-		Dicom::e_patient_comments,
-		Dicom::e_type_of_patient_id,
-
-		Dicom::e_issuer_of_patient_id,//формально относится к клинике, но, поскольку он описывает автора patient_id, который мы меняем, должен быть определен здесь
-		Dicom::e_assigning_faculty_sequence,
-		//part_to_delete = GetDataelementsUtil(
-		Dicom::e_other_patient_ids,
-		Dicom::e_other_patient_ids_sequence,
-		Dicom::e_other_patient_names,
-		Dicom::e_patient_birthname,
-		Dicom::e_patient_mothers_birthname,
-		Dicom::e_medical_record_locator,
-		Dicom::e_referenced_patient_photo,
-		Dicom::e_assigning_faculty_sequence,
-		Dicom::e_formatted_patient_name,
-
-		//DistortXRayImageTechnicalData(const instance &original, const anonymizer_settings::level &settings)
-		Dicom::e_tube_current,
-		Dicom::e_tube_voltage_KVP,
-		Dicom::e_exposure_time,
-		Dicom::e_exposure,
-		Dicom::e_detector_type,
-		Dicom::e_distance_source_to_detector,
-
-		//DistortTechicalInfo(const instance &original, const anonymizer_settings::level &settings)
-		Dicom::e_series_description,
-		Dicom::e_protocol_name,
-		Dicom::e_software_versions,
-		Dicom::e_station_name,
-		Dicom::e_manufacturers_model_name,
-		Dicom::e_manufacturer,
-		Dicom::e_scan_options,
-
-		Dicom::e_scheduled_procedure_step_start_date,
-		Dicom::e_scheduled_procedure_step_end_date,
-		Dicom::e_performed_procedure_step_start_date,
-		Dicom::e_performed_procedure_step_id,
-
-		//доп. поля из задачи
-		//personal data
-		Dicom:: e_patient_name,
-		Dicom::e_patient_birthdate,
-		Dicom::e_patient_age,
-		Dicom::e_patient_id,
-
-		//Полностью удаляется следующее:
-		//additional personal data
-		Dicom::e_other_patient_ids,
-		Dicom::e_other_patient_ids_sequence,
-		Dicom::e_other_patient_names,
-		Dicom::e_patient_birthname,
-		Dicom::e_patient_mothers_birthname,
-		Dicom::e_medical_record_locator,
-		Dicom::e_referenced_patient_photo,
-		Dicom::e_assigning_faculty_sequence,
-		Dicom::e_formatted_patient_name,
-
-		//Еще следует удалять персональные данные врача, проводившего  исследование:
-		Dicom::e_physician_name,
-
-
-
-		//other data:
-		//device producer
-		Dicom::e_manufacturer,
-		//device model
-		Dicom::e_manufacturers_model_name,
-		//current
-		Dicom::e_tube_current,
-		//voltage
-		Dicom::e_tube_voltage_KVP,
-		Dicom::e_CTDIvol,
-	};
-
-	tagListToDownload.insert(tagListToDownload.end(), vecTmp.begin(), vecTmp.end());
-	delete_duplicates_tags(tagListToDownload);
-	return tagListToDownload;
-}
 
 void UUID_generation()
 {
