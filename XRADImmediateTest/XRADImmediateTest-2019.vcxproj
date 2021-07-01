@@ -177,7 +177,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="$(XRADRoot)\XRADBasic\Sources\PlatformSpecific\MSVC\XRADNatvisTest.cpp" />
+    <ClCompile Include="XRADNatvisTest.cpp" />
     <ClCompile Include="$(XRADRoot)\XRADBasic\Tests\StringConverters_MS_Test.cpp" />
     <ClCompile Include="$(XRADRoot)\XRADBasic\Tests\StringEncodeTest.cpp" />
     <ClCompile Include="pre.cpp">
