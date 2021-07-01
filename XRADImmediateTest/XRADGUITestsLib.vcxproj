@@ -35,89 +35,87 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{633BBEAC-FB5C-448E-965C-B153501514A6}</ProjectGuid>
-    <RootNamespace>XRADImmediateTest</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>XRADImmediateTest</ProjectName>
+    <ProjectGuid>{45C7128E-CB44-432F-BBD1-856A57BECFE7}</ProjectGuid>
+    <RootNamespace>XRADGUITestsLib</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.props" />
   </ImportGroup>
   <ImportGroup Label="Shared">
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="$(XRADRoot)\XRADGUI\MSVC\XRADGUI-2019.props" />
+    <Import Project="XRADGUI-internal.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -137,50 +135,24 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|x64'">
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|Win32'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|Win32'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugEHA|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|x64'">
-    <ClCompile>
-      <AdditionalIncludeDirectories>.;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="XRADNatvisTest.cpp" />
-    <ClCompile Include="StringConverters_MS_Test.cpp" />
-    <ClCompile Include="StringEncodeTest.cpp" />
-    <ClCompile Include="pre.cpp">
+    <ClCompile Include="..\..\XRADQt\Tests\QtStringConverters_Test.cpp" />
+    <ClCompile Include="XRADGUITestsLib_pre.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugEHA|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
@@ -190,62 +162,12 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='ReleaseEHA|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="SharpeningTest.cpp" />
-    <ClCompile Include="TestArrays.cpp" />
-    <ClCompile Include="TestFFT.cpp" />
-    <ClCompile Include="TestDynamicDialog.cpp" />
-    <ClCompile Include="TestFileOperations.cpp" />
-    <ClCompile Include="TestFunctions.cpp" />
-    <ClCompile Include="TestFunctionsArchive.cpp" />
-    <ClCompile Include="TestGUIFunctions.cpp" />
-    <ClCompile Include="TestHandy.cpp" />
-    <ClCompile Include="TestJson.cpp" />
-    <ClCompile Include="TestMath.cpp" />
-    <ClCompile Include="TestMisc.cpp" />
-    <ClCompile Include="TestMoveSemantics.cpp" />
-    <ClCompile Include="TestPerformanceCounter.cpp" />
-    <ClCompile Include="TestProgress.cpp" />
-    <ClCompile Include="TestTextHandling.cpp" />
-    <ClCompile Include="TestThreads.cpp" />
-    <ClCompile Include="TrackedObject.cpp" />
-    <ClCompile Include="XRADImmediateTest.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="XRADImmediateTest.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="XRADNatvisTest.h" />
-    <ClInclude Include="StringConverters_MS_Test.h" />
-    <ClInclude Include="StringEncodeTest.h" />
-    <ClInclude Include="TestHelpers.h" />
+    <ClInclude Include="..\..\XRADQt\Tests\QtStringConverters_Test.h" />
     <ClInclude Include="pre.h" />
-    <ClInclude Include="SharpeningTest.h" />
-    <ClInclude Include="TestArrays.h" />
-    <ClInclude Include="TestFFT.h" />
-    <ClInclude Include="TestDynamicDialog.h" />
-    <ClInclude Include="TestFileOperations.h" />
-    <ClInclude Include="TestFunctions.h" />
-    <ClInclude Include="TestFunctionsArchive.h" />
-    <ClInclude Include="TestGUIFunctions.h" />
-    <ClInclude Include="TestHandy.h" />
-    <ClInclude Include="TestJson.h" />
-    <ClInclude Include="TestMath.h" />
-    <ClInclude Include="TestMisc.h" />
-    <ClInclude Include="TestMoveSemantics.h" />
-    <ClInclude Include="TestPerformanceCounter.h" />
-    <ClInclude Include="TestProgress.h" />
-    <ClInclude Include="TestTextHandling.h" />
-    <ClInclude Include="TestThreads.h" />
-    <ClInclude Include="TrackedObject.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="$(XRADRoot)\XRADBasic\Tests\readme.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <MASM Include="TestFFT_asm.asm" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
-    <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets" />
   </ImportGroup>
 </Project>

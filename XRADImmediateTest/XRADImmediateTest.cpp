@@ -13,7 +13,7 @@
 #include "TestFFT.h"
 #include "TestHandy.h"
 #ifdef XRAD_COMPILER_MSC
-#include <XRADBasic/Sources/PlatformSpecific/MSVC/XRADNatvisTest.h>
+#include "XRADNatvisTest.h"
 #endif // XRAD_COMPILER_MSC
 
 #include <iostream>

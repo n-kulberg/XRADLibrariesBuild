@@ -7,12 +7,11 @@
 #define Tests_h__
 
 #include <XRADDicom/XRADDicom.h>
+#include "RadonTest.h"
 
 XRAD_USING
 
 void AnalyzeDicomDatasource(const Dicom::datasource_t &dcm_datasrc, bool display_loaded_data = true, bool modify = false, bool save_to_file = false);
-
-void UUID_generation();
 
 void any_necessary_test();
 

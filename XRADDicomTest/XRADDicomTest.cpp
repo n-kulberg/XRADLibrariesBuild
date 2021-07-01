@@ -79,10 +79,12 @@ int xrad::xrad_main(int in_argc, char *in_argv[])
 					{
 						TestSpongeSimulation();
 					}))
-				, MakeButton("UUID generation", make_fn([]()
+
+				, MakeButton("Radon test", make_fn([]()
 					{
-						UUID_generation();
+						CTRadonTest();
 					}))
+
 				, MakeButton("any necessary test", make_fn([]()
 					{
 						any_necessary_test();

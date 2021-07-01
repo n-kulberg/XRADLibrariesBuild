@@ -166,6 +166,7 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="RadonTest.cpp" />
     <ClCompile Include="XRADDicomTest.cpp" />
     <ClCompile Include="GenerateFigures.cpp" />
     <ClCompile Include="pre.cpp">
