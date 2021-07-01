@@ -2,10 +2,10 @@
 
 #include "TestTextHandling.h"
 
-#include <XRADBasic/Tests/TestHelpers.h>
-#include <XRADBasic/Tests/StringEncodeTest.h>
-#include <XRADBasic/Tests/StringConverters_MS_Test.h>
-#include <XRADQt/Tests/QtStringConverters_Test.h>
+#include "TestHelpers.h"
+#include <StringEncodeTest.h>
+#include <StringConverters_MS_Test.h>
+#include "QtStringConverters_Test.h"
 #include <XRADBasic/Sources/Core/EscapeSequences.h>
 #include <XRADSystem/TextFile.h>
 
