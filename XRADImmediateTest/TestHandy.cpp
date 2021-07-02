@@ -13,13 +13,23 @@
 #include "pre.h"
 #include <XRADGUI/XRAD.h>
 #include "TestHandy.h"
+#include <XRADGUI/Sources/RasterImageFile/RasterImageFile.h>
 
 //--------------------------------------------------------------
 
 using namespace xrad;
 void TestHandy()
 {
-	auto img = GetPainting(L"Нарисуйте картинку", 512, 512);
+// 	RealFunction2D_F32 img (512, 512, 0);
+// 
+// 	for(size_t i = 0; i < 512; ++i) img.at(i, i) = 255;
+
+	wstring	filename = GetFileNameRead(L"Select image file");
+
+	RasterImageFile	file(filename, L"rb");
+
+	auto img = file.rgb();
+
 	DisplayMathFunction2D(img, L"Картинка");
 }
 
