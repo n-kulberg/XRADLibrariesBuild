@@ -13,7 +13,7 @@
 #include "pre.h"
 #include <XRADGUI/XRAD.h>
 #include "TestHandy.h"
-#include <RasterImageFile.h>
+#include <XRADGUI/Sources/RasterImageFile/RasterImageFile.h>
 
 //--------------------------------------------------------------
 
