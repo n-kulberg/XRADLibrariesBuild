@@ -111,7 +111,7 @@ string to_string_value(double v)
 }
 
 template <class PT, class ST>
-string to_string_value(ComplexSample<PT, ST> v)
+string to_string_value(complex_sample<PT, ST> v)
 {
 	return to_string_value(v.re);
 }
